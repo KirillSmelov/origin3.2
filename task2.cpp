@@ -23,6 +23,27 @@ private:
 };
 
 
+void Command(Counter& counter)
+{
+	char symbol = '0';
+	while (symbol != 'x')
+	{
+		std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
+		std::cin >> symbol;
+		switch (symbol)
+		{
+		case '+': {counter.Inc(); break; }
+		case '-': {counter.Dec(); break; }
+		case '=':
+		{
+			std::cout << counter.ShowValue();
+			std::cout << std::endl;
+			break;
+		}
+		case 'x': {std::cout << "До свидания!"; break; }
+		}
+	}
+}
 int main(int argc, char** argv)
 {
 	system("chcp 1251");
@@ -35,46 +56,12 @@ int main(int argc, char** argv)
 		int Init = 0;
 		std::cin >> Init;
 		Counter counter(Init);
-		char symbol = '0';
-		while (symbol != 'x')
-		{
-			std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
-			std::cin >> symbol;
-			switch (symbol)
-			{
-			case '+': {counter.Inc(); break; }
-			case '-': {counter.Dec(); break; }
-			case '=': 
-			{
-				std::cout << counter.ShowValue();
-				std::cout << std::endl;
-				break;
-			}
-			case 'x': {std::cout << "До свидания!"; break; }
-			}
-		}
+		Command(counter);
 	}
 	else
 	{
 		Counter counter;
-		char symbol = '0';
-		while (symbol != 'x')
-		{
-			std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
-			std::cin >> symbol;
-			switch (symbol)
-			{
-			case '+': {counter.Inc(); break; }
-			case '-': {counter.Dec(); break; }
-			case '=':
-			{
-				std::cout << counter.ShowValue();
-				std::cout << std::endl;
-				break;
-			}
-			case 'x': {std::cout << "До свидания!"; break; }
-			}
-		}
+		Command(counter);
 	}
 	return 0;
 }
